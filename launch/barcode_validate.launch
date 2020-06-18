@@ -1,0 +1,10 @@
+<launch>
+
+	<!-- BARCODE VALIDATE (OUT) -->
+	<node	pkg="common_barcode_application" 
+		name="barcode_validate" 
+		type="barcode_validate.py" >
+	<!-- 	output="screen"> -->
+	</node>
+
+</launch>

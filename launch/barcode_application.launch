@@ -1,0 +1,15 @@
+<launch>
+
+	<!-- BARCODE/QRCODE DETECTION -->
+	<include file="$(find common_barcode_application)/launch/barcode_detection.launch"/>
+
+	<!-- BARCODE/QRCODE IDENTIFICATION -->
+	<include file="$(find common_barcode_application)/launch/barcode_identification.launch"/>
+
+	<!-- BARCODE RECORD (IN) -->
+	<include file="$(find common_barcode_application)/launch/barcode_record.launch"/>
+
+	<!-- BARCODE VALIDATE (OUT) -->
+	<include file="$(find common_barcode_application)/launch/barcode_validate.launch"/>
+
+</launch>

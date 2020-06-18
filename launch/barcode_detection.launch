@@ -1,0 +1,10 @@
+<launch>
+
+	<!-- BARCODE/QRCODE DETECTION -->
+	<node	pkg="common_barcode_application" 
+		name="barcode_detection" 
+		type="barcode_detection.py" >
+	<!-- 	output="screen"> -->
+	</node>
+
+</launch>

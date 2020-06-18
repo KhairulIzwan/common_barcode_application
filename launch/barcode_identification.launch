@@ -1,0 +1,10 @@
+<launch>
+
+	<!-- BARCODE/QRCODE IDENTIFICATION -->
+	<node	pkg="common_barcode_application" 
+		name="barcode_identification" 
+		type="barcode_identification.py" >
+	<!-- 	output="screen"> -->
+	</node>
+
+</launch>

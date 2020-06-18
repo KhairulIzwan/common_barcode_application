@@ -1,0 +1,10 @@
+<launch>
+
+	<!-- BARCODE RECORD (IN) -->
+	<node	pkg="common_barcode_application" 
+		name="barcode_record" 
+		type="barcode_record.py" >
+	<!-- 	output="screen"> -->
+	</node>
+
+</launch>

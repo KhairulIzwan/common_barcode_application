@@ -99,18 +99,14 @@ class BarcodeRecognition_node:
 
 	def preview(self):
 
-		if self.image_received:
-			# Overlay some text onto the image display
-			timestr = time.strftime("%Y%m%d-%H%M%S")
-			cv2.putText(self.image, timestr, (10, 20), 1, 1, 
-				(255, 255, 255), 1, cv2.LINE_AA, False)
+		# Overlay some text onto the image display
+		timestr = time.strftime("%Y%m%d-%H%M%S")
+		cv2.putText(self.image, timestr, (10, 20), 1, 1, 
+			(255, 255, 255), 1, cv2.LINE_AA, False)
 
-			# show the output frame
-			cv2.imshow("Frame", self.image)
-			cv2.waitKey(1)
-
-		else:
-			rospy.logerr("No images recieved")
+		# show the output frame
+		cv2.imshow("Frame", self.image)
+		cv2.waitKey(1)
 
 	# Publishing
 	def pubScanCode(self):
@@ -123,7 +119,8 @@ class BarcodeRecognition_node:
 
 	# Get the Scanned Barcode
 	def getBarcode(self):
-		try:
+#		try:
+		if self.image_received:
 
 			# find the barcodes in the frame and decode each of the barcodes
 			self.barcodes = pyzbar.decode(self.image)
@@ -162,8 +159,11 @@ class BarcodeRecognition_node:
 
 				self.status_received = False
 
-		except KeyboardInterrupt as e:
-			print(e)
+#		except KeyboardInterrupt as e:
+#			print(e)
+
+		else:
+			rospy.logerr("No images recieved")
 
 if __name__ == '__main__':
 

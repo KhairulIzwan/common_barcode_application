@@ -159,9 +159,6 @@ class BarcodeRecognition_node:
 
 				self.status_received = False
 
-#		except KeyboardInterrupt as e:
-#			print(e)
-
 		else:
 			rospy.logerr("No images recieved")
 

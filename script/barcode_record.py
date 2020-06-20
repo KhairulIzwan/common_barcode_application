@@ -122,7 +122,7 @@ class BarcodeRecord:
 	def pubBoxPos(self):
 
 		# Publish
-		self.boxPos.data = self.boxID + 1
+		self.boxPos.data = self.boxID[0] + 1
 		self.boxPos_pub.publish(self.boxPos)
 
 		# Sleep to give the last log messages time to be sent

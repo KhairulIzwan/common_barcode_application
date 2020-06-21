@@ -29,7 +29,7 @@ from pyzbar import pyzbar
 import datetime
 import time
 
-class BarcodeRecognition_node:
+class BarcodeRecognition:
 	def __init__(self):
 
 		self.bridge = CvBridge()
@@ -54,9 +54,9 @@ class BarcodeRecognition_node:
 		status_topic = "/scan_status"
 		self.status_sub = rospy.Subscriber(status_topic, String, self.cbStatus)
 
-		# Publish String msg
+		# Subscribe String msg
 		code_topic = "/scanned_barcode"
-		self.code_pub = rospy.Publisher(code_topic, String, queue_size=10)
+		self.code_sub = rospy.Subscriber(code_topic, String, self.cbCode)
 
 		# Allow up to one second to connection
 		rospy.sleep(1)
@@ -168,7 +168,7 @@ if __name__ == '__main__':
 
 	# Initialize
 	rospy.init_node("barcode_recognition", anonymous=False)
-	barcode = BarcodeRecognition_node()
+	barcode = BarcodeRecognition()
 
 	# Camera preview
 	while not rospy.is_shutdown():

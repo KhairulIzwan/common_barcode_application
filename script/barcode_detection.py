@@ -56,7 +56,7 @@ class BarcodeRecognition:
 
 		# Subscribe String msg
 		code_topic = "/scanned_barcode"
-		self.code_sub = rospy.Subscriber(code_topic, String, self.cbCode)
+		self.code_pub = rospy.Publisher(code_topic, String, queue_size=10)
 
 		# Allow up to one second to connection
 		rospy.sleep(1)

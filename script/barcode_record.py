@@ -117,7 +117,7 @@ class BarcodeRecord:
 		self.position = boxPos
 
 		self.boxID = np.array(self.position)
-		self.boxID = np.where(self.boxID == 0)[0]
+		self.boxID = np.where(self.boxID == 1)[0]
 
 	def pubBoxPos(self):
 

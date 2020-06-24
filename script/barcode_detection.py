@@ -59,7 +59,7 @@ class BarcodeRecognition:
 		self.code_pub = rospy.Publisher(code_topic, String, queue_size=10)
 
 		# Allow up to one second to connection
-		rospy.sleep(1)
+		rospy.sleep(2)
 
 	def cbImage(self, msg):
 

@@ -64,13 +64,18 @@ class BarcodeIdentity_node:
 			# Current approach:
 			# StoreQR: OrderID & CustomerEmail
 			# CustomerQR: OrderID
-			lst = re.findall('\S+@\S+', self.qr)
-
-			if len(lst) == 1:
+			if len(self.qr.split(",")) > 1:
 				self.typeQR.data = "store"
-
-			elif len(lst) == 0:
+			else:
 				self.typeQR.data = "customer"
+
+#			lst = re.findall('\S+@\S+', self.qr)
+#
+#			if len(lst) == 1:
+#				self.typeQR.data = "store"
+#
+#			elif len(lst) == 0:
+#				self.typeQR.data = "customer"
 
 			self.pubMode()
 

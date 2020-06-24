@@ -117,7 +117,7 @@ class BarcodeRecord:
 		self.position = boxPos
 
 		self.boxID = np.array(self.position)
-		self.boxID = np.where(self.boxID == 1)[0]
+		self.boxID = np.where(self.boxID == 0)[0]
 
 	def pubBoxPos(self):
 
@@ -131,7 +131,8 @@ class BarcodeRecord:
 	def generateQR(self):
 
 		# Generate QR Code
-		self.custQR = self.qr.rsplit(',', 1)[0]
+		self.custQR = self.qr.split(",")[0]
+		#self.custQR = self.qr.rsplit(',', 1)[0]
 		self.urlcustomer = pyqrcode.create(self.custQR)
 		self.customerQR = self.outputQRDir + "/" + self.custQR + ".png"
 		self.urlcustomer.png(self.customerQR, scale=8)
@@ -141,7 +142,7 @@ class BarcodeRecord:
 		# Email QR Code
 		email = 'wansnap@gmail.com' # Your email
 		password = 'Kh@irulizwan1984' # Your email account password
-		send_to_emails = [self.qr.rsplit(',', 1)[1], 'shafikahdarwis@gmail.com'] # List of email addresses
+		send_to_emails = [self.qr.split(",")[1], 'shafikahdarwis@gmail.com'] # List of email addresses
 		subject = "Order ID " + self.custQR # The subject line
 		message = "Please proceed to our Self Collect Machine, and show the Code" # The message in the email
 		file_location = self.customerQR

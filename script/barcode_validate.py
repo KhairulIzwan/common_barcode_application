@@ -76,7 +76,7 @@ class BarcodeValidate:
 			print(e)
 
 		self.code_received = True
-		self.qr = qrcode
+		self.qr = qrcode.split(",")[0]
 
 	def cbQRmode(self, msg):
 

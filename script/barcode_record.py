@@ -186,11 +186,11 @@ class BarcodeRecord:
 		self.status_pub.publish(self.scanStatus)
 
 		# Sleep to give the last log messages time to be sent
-		rospy.sleep(0.1)
+#		rospy.sleep(0.1)
 
 	def update(self):
 
-		if self.mode_recieved and self.mode == "store":
+		if self.mode_recieved and self.mode == "store" and len(self.qr.split(",")) == 2:
 			if self.box_recieved and len(self.boxID) > 0:
 				# if the barcode text is currently not in our CSV file, write
 				# the timestamp + barcode to disk and update the set

@@ -94,7 +94,7 @@ class BarcodeValidate:
 		self.status_pub.publish(self.scanStatus)
 
 		# Sleep to give the last log messages time to be sent
-		rospy.sleep(0.1)
+#		rospy.sleep(0.1)
 
 	def pubActive(self):
 
@@ -102,11 +102,11 @@ class BarcodeValidate:
 		self.active_pub.publish(self.boxID_active)
 
 		# Sleep to give the last log messages time to be sent
-		rospy.sleep(0.1)
+#		rospy.sleep(0.1)
 
 	def update(self):
 
-		if self.mode_recieved and self.mode == "customer":
+		if self.mode_recieved and self.mode == "customer" and len(self.qr.split(",")) == 1:
 			# if the barcode text is currently not in our CSV file, write
 			# the timestamp + barcode to disk and update the set
 			if self.code_received and self.qr.split(",")[0] not in self.found:

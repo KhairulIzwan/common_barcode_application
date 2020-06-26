@@ -55,15 +55,6 @@ class BarcodeRecord:
 		except OSError as e:
 			print(e)
 
-		# initialize the output directory path and create the output directory
-		self.p = os.path.sep.join([self.rospack.get_path('common_video-recording_application')])
-		self.outputDir = os.path.join(self.p, "video")
-
-		try:
-			os.makedirs(self.outputDir)
-		except OSError as e:
-			print(e)
-
 		self.csv_filename = self.outputDir + "/store_barcode" + ".csv"
 		self.csv = open(self.csv_filename, "a")
 		self.found = set()
@@ -74,11 +65,6 @@ class BarcodeRecord:
 			os.makedirs(self.outputQRDir)
 		except OSError as e:
 			print(e)
-
-		# The duration in seconds of the video captured
-		self.capture_duration = 5
-
-		self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
 		# Subscribe String msg
 		code_topic = "/scanned_barcode"
@@ -221,8 +207,6 @@ class BarcodeRecord:
 					# Generate QR Code
 					self.generateQR()
 
-					self.record()
-
 					# Email QR Code
 					self.pushEmail()
 
@@ -240,21 +224,6 @@ class BarcodeRecord:
 				self.pubStatus()
 
 #			self.mode_recieved = False
-
-	def record(self):
-
-		if len(self.qr.split(",")) > 1:
-			self.mode = "store"
-		else:
-			self.mode = "customer"
-		rospy.loginfo("Recording...")
-		timestr = time.strftime("%Y%m%d-%H%M%S-")
-		filename = self.outputDir + "/"+ timestr + self.qr.split(",")[0] + "-" +self.mode + "-" + ".avi"
-		out = cv2.VideoWriter(filename,self.fourcc, 20.0, (320, 240))
-		start_time = time.time()
-		while(int(time.time() - start_time) < self.capture_duration):
-			out.write(self.image)
-		rospy.logwarn("Recording Done")
 
 if __name__ == '__main__':
 

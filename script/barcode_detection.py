@@ -38,6 +38,21 @@ class BarcodeRecognition:
 		self.code_received = False
 		self.status_received = False
 
+		# initialize the output directory path and create the output directory
+		self.p = os.path.sep.join([self.rospack.get_path('common_video-recording_application')])
+		self.outputDir = os.path.join(self.p, "video")
+
+		try:
+			os.makedirs(self.outputDir)
+		except OSError as e:
+			print(e)
+
+
+		# The duration in seconds of the video captured
+		self.capture_duration = 5
+
+		self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
+
 		# Subscribe Image msg
 		img_topic = "/cv_camera/image_raw"
 		self.image_sub = rospy.Subscriber(img_topic, Image, self.cbImage)
@@ -141,6 +156,7 @@ class BarcodeRecognition:
 				self.barcodeData = self.barcode.data.decode("utf-8")
 				self.barcodeType = self.barcode.type
 
+				self.record()
 				# Publishing
 				self.pubScanCode()
 
@@ -161,6 +177,22 @@ class BarcodeRecognition:
 
 		else:
 			rospy.logerr("No images recieved")
+
+	def record(self):
+
+		if len(self.barcodeData.split(",")) > 1:
+			self.mode = "store"
+		else:
+			self.mode = "customer"
+		rospy.loginfo("Recording...")
+		timestr = time.strftime("%Y%m%d-%H%M%S-")
+		filename = self.outputDir + "/"+ timestr + self.barcodeData.split(",")[0] + "-" +self.mode + "-" + ".avi"
+		out = cv2.VideoWriter(filename,self.fourcc, 20.0, (self.image_width,self.image_height))
+		start_time = time.time()
+		while(int(time.time() - start_time) < self.capture_duration):
+			self.preview()
+			out.write(self.image)
+		rospy.logwarn("Recording Done")
 
 if __name__ == '__main__':
 

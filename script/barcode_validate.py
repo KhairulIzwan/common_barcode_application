@@ -94,7 +94,7 @@ class BarcodeValidate:
 		self.status_pub.publish(self.scanStatus)
 
 		# Sleep to give the last log messages time to be sent
-#		rospy.sleep(0.5)
+		rospy.sleep(0.1)
 
 	def pubActive(self):
 
@@ -102,7 +102,7 @@ class BarcodeValidate:
 		self.active_pub.publish(self.boxID_active)
 
 		# Sleep to give the last log messages time to be sent
-#		rospy.sleep(0.5)
+		rospy.sleep(0.1)
 
 	def update(self):
 

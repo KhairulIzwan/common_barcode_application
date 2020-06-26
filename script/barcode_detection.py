@@ -115,7 +115,7 @@ class BarcodeRecognition:
 		self.code_pub.publish(self.scanCode)
 
 		# Sleep to give the last log messages time to be sent
-#		rospy.sleep(0.5)
+		rospy.sleep(0.1)
 
 	# Get the Scanned Barcode
 	def getBarcode(self):

@@ -186,7 +186,7 @@ class BarcodeRecord:
 		self.status_pub.publish(self.scanStatus)
 
 		# Sleep to give the last log messages time to be sent
-#		rospy.sleep(0.5)
+		rospy.sleep(0.1)
 
 	def update(self):
 

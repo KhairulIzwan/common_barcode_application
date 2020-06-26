@@ -55,7 +55,7 @@ class BarcodeIdentity_node:
 		self.mode_pub.publish(self.typeQR)
 
 		# Sleep to give the last log messages time to be sent
-#		rospy.sleep(0.5)
+		rospy.sleep(0.1)
 
 	def getMode(self):
 

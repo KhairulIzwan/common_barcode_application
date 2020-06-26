@@ -69,14 +69,6 @@ class BarcodeIdentity_node:
 			elif len(self.qr.split(",")) == 1:
 				self.typeQR.data = "customer"
 
-#			lst = re.findall('\S+@\S+', self.qr)
-#
-#			if len(lst) == 1:
-#				self.typeQR.data = "store"
-#
-#			elif len(lst) == 0:
-#				self.typeQR.data = "customer"
-
 			self.pubMode()
 
 			self.code_received = False

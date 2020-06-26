@@ -250,7 +250,7 @@ class BarcodeRecord:
 		rospy.loginfo("Recording...")
 		timestr = time.strftime("%Y%m%d-%H%M%S-")
 		filename = self.outputDir + "/"+ timestr + self.qr.split(",")[0] + "-" +self.mode + "-" + ".avi"
-		out = cv2.VideoWriter(filename,self.fourcc, 20.0, (self.image_width,self.image_height))
+		out = cv2.VideoWriter(filename,self.fourcc, 20.0, (320, 240))
 		start_time = time.time()
 		while(int(time.time() - start_time) < self.capture_duration):
 			out.write(self.image)

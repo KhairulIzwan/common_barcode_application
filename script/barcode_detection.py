@@ -15,6 +15,7 @@ import sys
 import rospy
 import cv2
 import imutils
+import os
 
 from std_msgs.msg import String
 from sensor_msgs.msg import Image

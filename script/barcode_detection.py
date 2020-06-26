@@ -189,13 +189,14 @@ class BarcodeRecognition:
 			self.mode = "customer"
 		rospy.loginfo("Recording...")
 		timestr = time.strftime("%Y%m%d-%H%M%S-")
-		filename = self.outputDir + "/"+ timestr + self.barcodeData.split(",")[0] + "-" +self.mode + "-" + ".avi"
-		out = cv2.VideoWriter(filename,self.fourcc, 20.0, (self.image_width,self.image_height))
-		start_time = time.time()
-		while(int(time.time() - start_time) < self.capture_duration):
-			self.preview()
-			out.write(self.image)
-		rospy.logwarn("Recording Done")
+		filename = self.outputDir + "/"+ timestr + self.barcodeData.split(",")[0] + "-" +self.mode + "-" + ".png"
+#		out = cv2.VideoWriter(filename,self.fourcc, 20.0, (self.image_width,self.image_height))
+#		start_time = time.time()
+#		while(int(time.time() - start_time) < self.capture_duration):
+#			self.preview()
+#			out.write(self.image)
+#		rospy.logwarn("Recording Done")
+		cv2.imwrite(filename, self.image)
 
 if __name__ == '__main__':
 

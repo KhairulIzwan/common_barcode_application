@@ -78,6 +78,8 @@ class BarcodeRecord:
 		# The duration in seconds of the video captured
 		self.capture_duration = 5
 
+		self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
+
 		# Subscribe String msg
 		code_topic = "/scanned_barcode"
 		self.code_sub = rospy.Subscriber(code_topic, String, self.cbCode)

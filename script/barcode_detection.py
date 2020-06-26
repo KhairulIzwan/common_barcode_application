@@ -16,6 +16,7 @@ import rospy
 import cv2
 import imutils
 import os
+import rospkg
 
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
@@ -33,6 +34,7 @@ import time
 class BarcodeRecognition:
 	def __init__(self):
 
+		self.rospack = rospkg.RosPack()
 		self.bridge = CvBridge()
 		self.scanCode = String()
 		self.image_received = False

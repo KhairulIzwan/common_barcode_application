@@ -109,10 +109,10 @@ class BarcodeValidate:
 		if self.mode_recieved and self.mode == "customer":
 			# if the barcode text is currently not in our CSV file, write
 			# the timestamp + barcode to disk and update the set
-			if self.code_received and self.qr not in self.found:
+			if self.code_received and self.qr.split(",")[0] not in self.found:
 				self.csv.write("{},{}\n".format(datetime.datetime.now(), self.qr))
 				self.csv.flush()
-				self.found.add(self.qr)
+				self.found.add(self.qr.split(",")[0])
 				with open(self.csv_filename_store, 'rt') as f_obj:
 					reader = csv.reader(f_obj, delimiter=',')
 					# Iterates through the rows of your csv

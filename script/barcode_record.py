@@ -186,7 +186,7 @@ class BarcodeRecord:
 		self.status_pub.publish(self.scanStatus)
 
 		# Sleep to give the last log messages time to be sent
-		rospy.sleep(0.5)
+#		rospy.sleep(0.5)
 
 	def update(self):
 
@@ -194,12 +194,12 @@ class BarcodeRecord:
 			if self.box_recieved and len(self.boxID) > 0:
 				# if the barcode text is currently not in our CSV file, write
 				# the timestamp + barcode to disk and update the set
-				if self.code_received and self.qr not in self.found:
+				if self.code_received and self.qr.split(",")[0] not in self.found:
 					self.csv.write("{},{},{}\n".format(datetime.datetime.now(), 
 						self.qr, int(self.boxID[0])))
 
 					self.csv.flush()
-					self.found.add(self.qr)
+					self.found.add(self.qr.split(",")[0])
 
 					# Publish
 					self.pubBoxPos()

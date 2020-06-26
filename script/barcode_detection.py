@@ -147,17 +147,17 @@ class BarcodeRecognition:
 			# Refresh the image on the screen
 			self.preview()
 
-			if self.code_received:
-				cv2.putText(self.image, self.typeQR, (10, 60), 2, 
-					1, (0, 0, 255), 1, cv2.LINE_AA, False)
+#			if self.code_received:
+#				cv2.putText(self.image, self.typeQR, (10, 60), 2, 
+#					1, (0, 0, 255), 1, cv2.LINE_AA, False)
 
-				self.code_received = False
+#				self.code_received = False
 
-			if self.status_received:
-				cv2.putText(self.image, self.status, (10, 80), 2, 
-					1, (255, 255, 255), 1, cv2.LINE_AA, False)
+#			if self.status_received:
+#				cv2.putText(self.image, self.status, (10, 80), 2, 
+#					1, (255, 255, 255), 1, cv2.LINE_AA, False)
 
-				self.status_received = False
+#				self.status_received = False
 
 		else:
 			rospy.logerr("No images recieved")

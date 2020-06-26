@@ -159,7 +159,8 @@ class BarcodeRecognition:
 				self.barcodeData = self.barcode.data.decode("utf-8")
 				self.barcodeType = self.barcode.type
 
-				self.record()
+#				self.record()
+
 				# Publishing
 				self.pubScanCode()
 

@@ -35,6 +35,8 @@ from email.mime.base import MIMEBase
 from email import encoders
 import os.path
 
+from common_config import self_collect_config as config
+
 class BarcodeRecord:
 	def __init__(self):
 
@@ -140,9 +142,13 @@ class BarcodeRecord:
 	def pushEmail(self):
 
 		# Email QR Code
-		email = 'wansnap@gmail.com' # Your email
-		password = 'Kh@irulizwan1984' # Your email account password
-		send_to_emails = [self.qr.split(",")[1], 'shafikahdarwis@gmail.com'] # List of email addresses
+		# System Email
+		email = config.EMAIL_ADDRESS
+		# System email account password
+		password = config.PASSWORD
+
+		# List of email addresses
+		send_to_emails = [self.qr.split(",")[1], config.CC_EMAIL_ADDRESS_1, config.CC_EMAIL_ADDRESS_2] 
 		subject = "Order ID " + self.custQR # The subject line
 		message = "Please proceed to our Self Collect Machine, and show the Code" # The message in the email
 		file_location = self.customerQR

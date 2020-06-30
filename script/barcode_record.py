@@ -148,7 +148,7 @@ class BarcodeRecord:
 		password = config.PASSWORD
 
 		# List of email addresses
-		send_to_emails = [self.qr.split(",")[1], config.CC_EMAIL_ADDRESS_1, config.CC_EMAIL_ADDRESS_2] 
+		send_to_emails = [self.qr.split(",")[1], config.CC_EMAIL_ADDRESS] 
 		subject = "Order ID " + self.custQR # The subject line
 		message = "Please proceed to our Self Collect Machine, and show the Code" # The message in the email
 		file_location = self.customerQR

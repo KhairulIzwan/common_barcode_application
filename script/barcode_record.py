@@ -49,7 +49,7 @@ class BarcodeRecord:
 		self.box_recieved = False
 
 		# initialize the output directory path and create the output directory
-		self.p = os.path.sep.join([self.rospack.get_path('common_barcode_application')])
+		self.p = os.path.sep.join([self.rospack.get_path('self_collect_machine')])
 		self.outputDir = os.path.join(self.p, "csv")
 
 		try:
